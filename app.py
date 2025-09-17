@@ -20,7 +20,10 @@ async def generate_new_oid(file: UploadFile | None = File(None)):
     if not file.filename.lower().endswith(".csv"):
         raise HTTPException(
             status_code=400,
-            detail="Format file harus CSV"
+            detail={
+                "status": "error",
+                    "code": 400,
+                    "message": "File wajib csv"}
         )
 
     # Path untuk simpan file upload
