@@ -3,6 +3,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: fastapi-oid
+    container_name: get-new-oid
     ports:
       - "8085:8085"
