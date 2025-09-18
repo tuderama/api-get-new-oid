@@ -2,8 +2,16 @@ from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.responses import JSONResponse
 import pathlib, shutil, csv, json
 import pandas as pd
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],  
+    allow_headers=["*"],
+)
 
 @app.post("/generate-new-oid")
 async def generate_new_oid(file: UploadFile | None = File(None)):
